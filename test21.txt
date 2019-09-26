@@ -1,0 +1,154 @@
+Skip to content
+Search or jump toÖ
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@BlackDude22 
+Learn Git and GitHub without any code!
+Using the Hello World guide, youíll start a branch, write comments, and open a pull request.
+
+
+3
+04blockchain-group/Blockchain-technologijos
+ Code Issues 0 Pull requests 0 Projects 0 Wiki Security Insights
+Blockchain-technologijos/pratybos/1uzduotis-Hashavimas.md
+@blockchain-group blockchain-group Update 1uzduotis-Hashavimas.md
+2ce6b0c 43 minutes ago
+@blockchain-group@dqmis@fernest
+55 lines (38 sloc)  5.99 KB
+  
+1-oji uûduotis: Hash generatorius
+Maiöos funkcijos (angl. hash function) yra labai svarbi blockchain (pvz. Bitcoin) protokolu dalis. Hash'avimo metu bet koks ivedimo tekstas (m) matematines hash funkcijos deka (h = h(m)) yra paverciamas unikaliu fiksuoto dydûio pseudo-atsitiktiniu skaiciumi, vadinamu maiöos kodu. Tradicine tokiu hash generatoriu veikimo schema yra:
+
+Hashing
+
+Kad geriau suvokti uûduoti, rekomenduotina pasibandyti, kaip veikia vieni geriausiai ir placiausiai naudojamu maiöos kodo genetoriu.
+
+Uûduoties formuluote
+Sukurkite Jusu (t.y. pabandykite neieökoti hash funkciju pavyzdûiu Internete) maiöos (hash) funkcija (hash kodu generatoriu), kuris pasiûymetu öiais hash funkcijoms keliamais reikalavimais:
+
+Maiöos funkcijos iejimas (angl. input) gali buti bet kokio dydûio simboliu eilute (angl. string).
+Maiöos funkcijos iöejimas (angl. output) visuomet yra to paties fiksuoto dydûio rezultatas.
+Maiöos funkcija yra deterministine, t. y., tam paciam ivedimui (angl. input'ui) iövedimas (angl. output'as) visuomet yra tas pats.
+Maiöos funkcijos reiköme/kodas (hashëas) bet kokiai input reikömei yra apskaiciuojamas nesunkiai - efektyviai.
+Iö funkcijos rezultato (output'o) praktiökai neimanoma atgaminti ivedimo (input'o).
+Praktiökai neimanoma surasti tokiu dvieju skirtingu argumentu (input'u), kad jiems gautume ta pati hash'a, t. y.,: m1 != m2, bet h(m1) = h(m2).
+Bent minimaliai pakeitus ivedima, pvz.vietoj "Lietuva" pateikus "lietuva", maiöos funkcijos rezultatas-kodas turi skirtis iö esmes:
+Ivedimas (input)	Iövedimas (hash'as gautas iö SHA256)
+lietuva	f51f6afefb2616f48bbddeeada2d729244a00fa0817f9ceb5c5419aa04b31172
+Lietuva	5109820f748796128b8bafd3806d05511bc89ad77fc3cda960facf37a639bc7f
+Lietuva!	f4ac741acca7dd6f5f7e6fd1e382eca604a26ba21a83a6a2215d7be830a8faa6
+Reikalavimai versijai (v0.1) (Preliminarus terminas: 2019-09-26)
+Pagal uûduoties formuluote, realizuokite hash'u generatoriu (pageidautina C++ kalboje). Programos realizavimas turi buti versijuojamas (pageidautina git'e) ir patalpintas Jusu Github'e.
+Realizacijoje input'a, esanti iöoriniame faile, reikia nurodyti per pateikta Command Line Argument'a. Taciau turi buti galimybe paduoti ir simboliu eilute, aka string'a.
+Atlikite eksperimentine analize (ûr. Komentarai del pradinio eksperimentinio tyrimo-analizes), kurios metu isitikinkite, kad Jusu hash funkcija-generatorius iö tiesu pasiûymi auköciau apraöytais hash funkcijoms keliamais reikalavimais. Atlikta tyrima iösamiai apraöykite README faile.
+Eksperimentinis tyrimas-analize turi buti atkartojamas, t. y., paskaitos metu reikes pademonstruoti, kaip vyksta tyrimas ir kaip argumentavote, kad Jusu maiöos funkcija pasiûymi öiomis savybemis.
+Komentarai del eksperimentinio tyrimo-analizes atlikimo
+Susikurkite testiniu ivedimo failu pavyzdûiu, tokiu kad:
+Bent du failai butu sudaryti tik iö vieno, taciau skirtingo, simbolio.
+Bent du failai butu sudaryti iö daug visiökai skirtingu simboliu (> 10000 simboliu)
+Bent du failai butu sudaryti iö daug simboliu ir skirtusi vienas nuo kito tik vienu simboliu.
+Tuöcias failas Ir iöveskite output'us. Nepriklausomai nuo Input'o, Output'ai turi buti vienodo dydûio. Tokiu budu pademonstruosite, kad Jusu hash funkcija atitinka 1-3-a reikalavimus.
+Iötirkite Jusu sukurtos hash funkcijos efektyvuma: tuo tikslu suhash'uokite kiekviena eilute iö konstitucija.txt failo. Reiktu cia matuoti, tik hash'avimo funkcijos veikimo laika (be input'o nuskaitymo/parengimo). Reiktu pateikti bendra sumini visu hash'avimu laika.
+(Advanced uûduotis - norintiems papildomu balu) Pabandykite kaip imanoma objektyviau palyginti Jusu Hash funkcijos sparta su MD5, SHA-1, SHA-256 ar kita gerai ûinoma hash funkcija. Paliekame Jums sugalvoti, kaip atlikti toki tyrima objektyviai!
+Susigeneruokite bent 100 000 atsitiktiniu simboliu eiluciu (string'u) poru (apsiribokite iki 5 simboliu eiluciu ilgiu) ir patikrinkite, kad visais atvejais gautieji poru hash'ai nesutampa. Tokiu budu bent dalinai isitikinsite, kad Jusu hash funkcija atitinka 6-a reikalavima.
+Susigeneruokite bent 100 000 atsitiktiniu simboliu eiluciu (string'u) poru, tokiu kad skirtusi jos tik vienu simboliu (apsiribokite iki 5 simboliu eiluciu ilgiu) ir ivertinkite Jusu gautu hash'u procentini "skirtinguma" bitu lygmenyje. Iöveskite iö minimalia, maksimalia ir vidurkines "skirtingumo" reikömes. Tokiu budu isitikinsite, kaip gerai Jusu hash funkcija atitinka 7-a reikalavima.
+Darbo vertinimas (Terminas: 2019-10-03)
+Iki 2.0 balu gausite atlike visas auköciau apraöytas uûduotis pagal pateiktus reikalavimus.
+Papildoma uûduotis (0.5 balo) (Terminas: 2019-10-03)
+Papildomu 0.5 balu surinkimas originalesnis. Pirmiausia reiktu visas Jusu grupes/pogrupio sukurtas hash funkcijas/generatorius apjungti/integruoti i vieno iö Jusu programa ir tuomet atlikti visa auköciau apraöyta lyginamaja analize (pagal 2-a ir 4-a eksperimentinio tyrimo-analizes atlikimo punktus) naudojant visus Jusu grupes/pogrupio sukurtus hash generatorius. Gautus grupes/pogrupio rezultatus uû abidvi uûduotis - agreguokite. tuomet jeigu Jusu sukurtas hash generatorius pateks tarp 25% geriausiu Jusu grupeje/pogrupyje (Q1 - pirmasis kvartilis), gausite papildomus 0.5 balo, o jeigu tarp 25% - 50% geriausiu Jusu grupeje/pogrupyje (Q2 - antrasis kvartilis), gausite papildomus 0.25 balo.
+
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+
+[paslepti]
+äios savaites iniciatyva: dangoraiûiai. Kvieciame prisideti!
+
+Antanas Nedzinskas
+Jump to navigationJump to search
+Bullet purple.pngBullet purple.pngAntanas Nedzinskas
+Antanas Nedzinskas.JPG
+Gime:	1981 m. kovo 15 d. (38 metai)
+Alytuje
+Motina:	Stase Nedzinskiene
+Veikla:	Lietuvos politikas, dainininkas, radijo stoties ÑLietusì laidos ÑDainos, öokiai, estrada" vedejas, dienraöcio ÑLietuvos ûinios" priedo ÑLé gidas" komentatorius
+Partija:	Tautos prisikelimo partija
+Alma mater:	2006 m. Vilniaus universitetas
+Antanas Nedzinskas (g. 1981 m. kovo 15 d. Alytuje) ñ Lietuvos politikas, dainininkas, radijo stoties ÑLietusì laidos ÑDainos, öokiai, estrada" vedejas, dienraöcio ÑLietuvos ûinios" priedo ÑLé gidas" komentatorius.
+
+
+Turinys
+1	Biografija
+2	Apdovanojimai
+3	Diskografija
+4	Nuorodos
+5	Iönaöos
+Biografija
+Motina ñ Stase Nedzinskiene, pedagoge, Alytaus Panemunes vidurines mokyklos fizikos mokytoja eksperte ir direktoriaus pavaduotoja ugdymui, keturias eileraöciu knygas iöleidusi poete.[1]
+
+Antanas Nedzinskas baige Alytaus Panemunes vidurine mokykla, Vilniaus universiteto Komunikacijos fakultete studijavo bibliotekininkyste ir ryöius su visuomene (2000ñ2006 m.), jam suteiktas magistro kvalifikacinis laipsnis. Studiju metais Antanas Nedzinskas sudare visatekste gamtininko Vytauto Nedzinsko straipsniu duomenu baze ir paraöe knyga ÑVytauto Nedzinsko paöaukimas" (iöleista 2005 m.).
+
+Nuo 2005 m. rugsejo men. Antanas dalyvavo realybes öou ÑDangusì, kurio metu atsiskleide kaip savita humoro jausma turintis atlikejas. äou metu Antanas Nedzinskas raöe ironiöka tinklaraöti.[2]
+
+2006 m. Antanas Nedzinskas dalyvavo Eurovizijos konkurso nacionalineje atrankoje. 2007 m. tapo Dzukijos senovines technikos klubo [1] nariu, dalyvauja senovines technikos ûygiuose ir paraduose. Antanas Nedzinskas turi du automobilius ÑVolga" (GAZ-21); kolekcionuoja 1960ñ1990 m. lietuviökos estrados kurinius: renka iölikusius iraöus (vinilines ploköteles).
+
+2008 m. rinkimuose i Seima Antanas Nedzinskas antrajame ture iveike buvusi ministra ir Seimo nari Vidmanta éiemeli (atitinkamai 47,82 proc. ir 47,41 proc. balsu) ir buvo iörinktas i Seima.
+
+Apdovanojimai
+2005 m. Vytauto Nedzinsko vardo premija.
+Diskografija
+ÑAntanas ñ Fontanasì, 2005;
+ÑAntanas ñ äampanasì, 2007;
+ÑAntanas ñ Gurmanasì 2008 (preliminariai).
+Nuorodos
+2008 m. Lietuvos Respublikos Seimo rinkimai;[3]
+Asmeninis Antano tinklalapis.
+Iönaöos
+ ÑKeistuolio Antano mamaì Aldona Jankauskiene 2009-01-26 05:02
+ http://whatson.delfi.lt/archive/article.php?id=7727151
+ 2008 m. Lietuvos Respublikos Seimo rinkimai ñ Tautos prisikelimo partija ñ Iökelti kandidatai
+Kategorijos: Lietuvos dainininkaiSeimo nariaiLietuvos kolekcionieriai
+Naröymo meniu
+Neprisijungesäio IP aptarimu puslapisIndelisSukurti paskyraPrisijungtiStraipsnisAptarimasKeistiKeisti vikitekstaIstorijaPaieöka
+Ieökoti Vikipedijoje
+Pagrindinis puslapis
+Bendruomene
+Forumas
+Naujausi keitimai
+Atsitiktinis straipsnis
+Pagalba
+Parama
+Spausdinti/eksportuoti
+Kurti knyga
+Parsisiusti kaip PDF
+Versija spausdinimui
+Irankiai
+Susije straipsniai
+Susije keitimai
+Specialieji puslapiai
+Nuolatine nuoroda
+Puslapio informacija
+Vikiduomenys iraöas
+Cituoti straipsni
+
+Kitomis kalbomis
+Dansk
+Deutsch
+Polski
+Keisti nuorodas
+äis puslapis paskutini karta keistas 12 sausio 2019 21:01.
+Tekstas pateikiamas pagal Creative Commons Attribution/Share-Alike Licencija; gali buti taikomos papildomos salygos. Detaliau ñ Terms of Use .
+Privatumo politikaApie VikipedijaJokiu garantijuKurejaiSlapuku politikaMobili perûiuraWikimedia FoundationPowered by MediaWiki

@@ -22,9 +22,9 @@ class TYLEK8137{
 				unsigned long long int* tempArray = stringToHash(substring);
 				generateHash(tempArray);
 				addHash(hashArray, tempArray);
+				generateHash(hashArray);
 				free(tempArray);
 			}
-			generateHash(hashArray);
 			std::string result = hexify(hashArray);
 			free(hashArray);
 			return result;
@@ -40,11 +40,9 @@ class TYLEK8137{
 		}
 
 		unsigned long long int* generateHash(unsigned long long int* hashArray){
-			square(hashArray);
 			for (int i = 0; i < iterations; i++){
-				mix(hashArray);
 				square(hashArray);
-				//mix(hashArray);
+				mix(hashArray);
 			}
 			return hashArray;
 		}
@@ -52,6 +50,7 @@ class TYLEK8137{
 		void square(unsigned long long int* hashArray){
 			for(int i = 0; i < blockCount; i++){
 				hashArray[i] = getSquareRootNumbers(hashArray[i]);
+				// std::cout << "square" << hashArray[i] << std::endl;
 			}
 		}
 
@@ -99,9 +98,10 @@ class TYLEK8137{
 
 		void addHash(unsigned long long int* hash1, unsigned long long int* hash2){
 			for (int i = 0; i < blockCount; i++){
-				if (hash1[i]%2 == 0)
+				if (hash1[i]%2 == 1)
 					hash1[i] = hash1[i]|hash2[i];
-				else hash1[i] = hash1[i]&hash2[i];
+				else 
+					hash1[i] = hash1[i]&hash2[i];
 			}
 		}
 };
