@@ -9,7 +9,7 @@ class TYLEK8137{
 	private:
 		const static size_t blockLength = 8;
 		const static size_t blockCount = 8;
-		const static size_t iterations = 5;
+		const static size_t iterations = 2;
 	public:
 		TYLEK8137(){
 		}
@@ -98,8 +98,8 @@ class TYLEK8137{
 
 		void addHash(unsigned long long int* hash1, unsigned long long int* hash2){
 			for (int i = 0; i < blockCount; i++){
-				if (hash1[i]%2 == 1)
-					hash1[i] = hash1[i]|hash2[i];
+				if (hash1[i]%2 == 0)
+					hash1[i] = hash1[i]&hash2[i];
 				else 
 					hash1[i] = hash1[i]&hash2[i];
 			}
