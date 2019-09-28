@@ -9,7 +9,7 @@ class TYLEK8137{
 	private:
 		const static size_t blockLength = 8;
 		const static size_t blockCount = 8;
-		const static size_t iterations = 4;
+		const static size_t iterations = 2;
 	public:
 		TYLEK8137(){
 		}
@@ -22,14 +22,18 @@ class TYLEK8137{
 				unsigned long long int* tempArray = stringToHash(substring);
 				generateHash(tempArray);
 				addHash(hashArray, tempArray);
-				generateHash(hashArray);
 				free(tempArray);
 			}
+			generateHash(hashArray);
 			std::string result = hexify(hashArray);
 			free(hashArray);
 			return result;
 		}
 
+		std::string operator()(std::string text){
+			return getHash(text);
+		}
+		
 	private:
 
 		unsigned long long int* stringToHash(std::string input){
@@ -40,9 +44,10 @@ class TYLEK8137{
 		}
 
 		unsigned long long int* generateHash(unsigned long long int* hashArray){
+			square(hashArray);
 			for (int i = 0; i < iterations; i++){
-				square(hashArray);
 				mix(hashArray);
+				square(hashArray);
 			}
 			return hashArray;
 		}
@@ -50,7 +55,6 @@ class TYLEK8137{
 		void square(unsigned long long int* hashArray){
 			for(int i = 0; i < blockCount; i++){
 				hashArray[i] = getSquareRootNumbers(hashArray[i]);
-				// std::cout << "square" << hashArray[i] << std::endl;
 			}
 		}
 
@@ -99,9 +103,8 @@ class TYLEK8137{
 		void addHash(unsigned long long int* hash1, unsigned long long int* hash2){
 			for (int i = 0; i < blockCount; i++){
 				if (hash1[i]%2 == 0)
-					hash1[i] = hash1[i]&hash2[i];
-				else 
-					hash1[i] = hash1[i]&hash2[i];
+					hash1[i] = (hash1[i] << 1)|hash2[i];
+				else hash1[i] = hash1[i]|hash2[i];
 			}
 		}
 };
