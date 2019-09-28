@@ -8,11 +8,13 @@
 #include "timer.hpp"
 #include "picosha2.h"
 
+#include <vector>
+
 std::string getHash(std::string input, std::string algorithm){
 	std::string result;
 	if (algorithm == "tylek8137"){
 		TYLEK8137 h;
-		result = h(input);
+		result = h.getHash(input);
 	} else if (algorithm == "picosha2")
 		result = picosha2::hash256_hex_string(input);
 	return result;
@@ -103,7 +105,6 @@ void test3(int testCount, std::string algorithm){
 }
 
 int main(int argc, char *argv[]){
-	TYLEK8137 h;
 	if (std::string(argv[1]) == "-f")
 		hashFile(std::string(argv[2]));
 	else if (std::string(argv[1]) == "-t1")
@@ -122,5 +123,5 @@ int main(int argc, char *argv[]){
 		else
 			test3(atoi(argv[2]), "tylek8137");
 	else 
-		std::cout << h(std::string(argv[1])) << std::endl;
+		std::cout << getHash(std::string(argv[1]), "tylek8137") << std::endl;
 }
