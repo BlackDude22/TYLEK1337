@@ -9,7 +9,7 @@ class TYLEK8137{
 	private:
 		const static size_t blockLength = 8;
 		const static size_t blockCount = 8;
-		const static size_t iterations = 2;
+		const static size_t iterations = 4;
 	public:
 		TYLEK8137(){
 		}
