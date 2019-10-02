@@ -2,6 +2,10 @@
 
 TYLEK8137 - tai maišos algoritmas gražinantis 256 bitų šešioliktainį skaičių (`string` pavidalu). Algoritmui galima paduoti bet kokio ilgio įvesties `string`'ą ir jis grąžins 64 simbolių ilgio `string`'ą. 
 
+## Naudojimo pavyzdys
+
+
+
 ## Algoritmas
 
 Algoritmo viduje duomenys saugomi 8 `unsigned long int` elementų masyve. Pradžioje sukuriamas masyvas, kurio kiekvieno elemento reikšmė lygi 0, tai bus masyvas saugantis galutinį rezultatą. Paskui vykdomas ciklas, kurio kievienos iteracijos metu apdorojami 8 įvesties `string`'o simboliai. Sukuriamas naujas masyvas, kurio reikšmės, tų simbolių ASCII reikšmės. Toliau vykdoma pati maišos funkcija 2 kartus. Iš kiekvienos reikšmės ištraukiama kvadratinė šaknis. Sudaroma reikšmė, kurios pirmi du simboliai yra šaknies sveikosios dalies du paskutiniai simboliai, sekantys šeši simboliai yra šaknies trupmeninės dalies pirmi šeši simboliai. Pavyzdžiui:
