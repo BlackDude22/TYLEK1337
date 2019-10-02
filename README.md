@@ -24,7 +24,7 @@ Pirma iteracija.
 
 Sumaišytas masyvas `7890 9990 0001 0000`
 
-Masyvas po XOR `7434 0003 0995 1000'
+Masyvas po XOR `7434 0003 0995 1000`
 
 Antra iteracija
 
@@ -32,7 +32,7 @@ Antra iteracija
 
 Sumaišytas masyvas `7001 4090 3090 4350`
 
-Masyvas po XOR `15095 3969 64 7332'
+Masyvas po XOR `15095 3969 64 7332`
 
 
 Antrasis masyvas XOR operacija pridedamas prie galutinio. Galutinis dar 1 kartą sumaišomas ankstesniu algoritmu. Nuskaitomi sekantys 8 įvesties simboliai ir veiksmai kartojami. Pabaigus nuskaityti įvestį, galutinis masyvas dar 2 kartus sumaišomas ir gražinama galutinis rezultatas.
