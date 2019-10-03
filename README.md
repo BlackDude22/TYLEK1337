@@ -69,25 +69,16 @@ Paskui sumaišomi masyvo elementų skaitmenys. Pavyzdžiui (pavyzdys bus rodomas
 
 Nauja masyvo elemento reikšmė apskaičiuojama atlikus XOR operaciją su šaknies reikšmėmis ir su jau sumaišytais skaitmenimis. Pavyzdžiui:
 
-Pradiniai elementai `abcd`.
-
-Masyvas iš ASCII reikšmių `0097 0098 0099 0100`.
-
-Pirma iteracija.
-
-Šaknų masyvas `0984 0989 0994 1000`
-
-Sumaišytas masyvas `7890 9990 0001 0000`
-
-Masyvas po XOR `7434 0003 0995 1000`
-
-Antra iteracija
-
-Šaknų masyvas `8622 0173 3154 3162`
-
-Sumaišytas masyvas `7001 4090 3090 4350`
-
-Masyvas po XOR `15095 3969 64 7332`
+Pradiniai elementai `abcd`.<br>
+Masyvas iš ASCII reikšmių `0097 0098 0099 0100`.<br>
+Pirma iteracija.<br>
+Šaknų masyvas `0984 0989 0994 1000`<br>
+Sumaišytas masyvas `7890 9990 0001 0000`<br>
+Masyvas po XOR `7434 0003 0995 1000`<br>
+Antra iteracija<br>
+Šaknų masyvas `8622 0173 3154 3162`<br>
+Sumaišytas masyvas `7001 4090 3090 4350`<br>
+Masyvas po XOR `15095 3969 64 7332`<br>
 
 
 Antrasis masyvas XOR operacija pridedamas prie galutinio. Galutinis dar 1 kartą sumaišomas ankstesniu algoritmu. Nuskaitomi sekantys 8 įvesties simboliai ir veiksmai kartojami. Pabaigus nuskaityti įvestį, galutinis masyvas dar 2 kartus sumaišomas ir gražinama galutinis rezultatas.
