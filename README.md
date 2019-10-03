@@ -4,6 +4,47 @@ TYLEK8137 - tai maišos algoritmas gražinantis 256 bitų šešioliktainį skai�
 
 ## Naudojimo pavyzdys
 
+Sukompiliuojame programą.
+
+`g++ -O3 main.cpp -o hash`
+
+Vykdome programą.
+
+***
+
+`./hash <tekstas>`
+
+Suhashuoja įvesties tekstą ir išveda jį į ekraną.
+
+***
+
+`./hash -f <kelias į failą>`
+
+Suhashuoja nurodyto failo turinį ir išveda į ekraną.
+
+***
+
+`./hash -t1 <kelias į failą>`
+
+Vykdomas pirmas testas.
+
+***
+
+`./hash -t2 <algoritmas> <testų skaičius>`
+
+Vykdomas antras testas.
+
+***
+
+`./hash -t3 <algoritmas> <testų skaičius>`
+
+Vykdomas trečias testas.
+
+## Pirmas testas
+
+Suhashuoja nurodyto failo turinį po vieną eilutę. Kiekvienas hash išvedamas į ekraną. Išvedamas realus hashavimo laikas.
+
+## Antras testas
 
 
 ## Algoritmas
