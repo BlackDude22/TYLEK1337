@@ -133,7 +133,7 @@ Panašumo koeficientas: 0.558594
 
 Testas atliktas su failu `konstitucija.txt`. Testi gauti hash'ai pateikti faile `konstitucijarez.txt`.
 
-Testo atlikimo laikas: 
+Testo atlikimo laikas: 0.0059872s
 
 ### Antras testas
 
