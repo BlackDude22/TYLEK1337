@@ -7,16 +7,18 @@
 #include "tylek8137.hpp"
 #include "timer.hpp"
 #include "picosha2.h"
-
-#include <vector>
+#include "RytisMasterClassOnHashingAlgorithms.h"
 
 std::string getHash(std::string input, std::string algorithm){
 	std::string result;
-	if (algorithm == "tylek8137"){
+	if (algorithm == "-tylek8137"){
 		TYLEK8137 h;
 		result = h.getHash(input);
-	} else if (algorithm == "picosha2")
+	} else if (algorithm == "-sha256"){
 		result = picosha2::hash256_hex_string(input);
+	} else if (algorithm == "-rytisgit"){
+		result = hash(input);
+	}
 	return result;
 }
 
@@ -49,7 +51,7 @@ void test2(int testCount, std::string algorithm){
 	std::set<std::string> hashes;
 	double totalTime = 0;
 	double intervalTime = 0;
-	int printInterval = 1e4;
+	int printInterval = 1e5;
 	int duplicate = 0;
 	for (int i = 1; i <= testCount; i++){
 		Timer start;
@@ -62,7 +64,7 @@ void test2(int testCount, std::string algorithm){
 		if (!p.second)
 			duplicate++;
 		if (i%((int)printInterval)==0){
-			std::cout << "Hashes: " << i << ", Duplicates: " << duplicate << ", Total time: " << totalTime << ", Hashes per second: " << printInterval/intervalTime << ", Average hashes per second: " << i/totalTime << std::endl;
+			std::cout << "Hashes: " << i << ", Duplicates: " << duplicate << ", Total hashing time: " << totalTime << "s, Hashes per second: " << printInterval/intervalTime << ", Average hashes per second: " << i/totalTime << std::endl;
 			intervalTime = 0;
 		}
 	}
@@ -108,20 +110,13 @@ int main(int argc, char *argv[]){
 	if (std::string(argv[1]) == "-f")
 		hashFile(std::string(argv[2]));
 	else if (std::string(argv[1]) == "-t1")
-		if (std::string(argv[2]) == "-sha256")
-			test1(std::string(argv[3]), "picosha2");
-		else
-			test1(std::string(argv[2]), "tylek8137");
+		test1(std::string(argv[3]), std::string(argv[2]));
 	else if (std::string(argv[1]) == "-t2")
-		if (std::string(argv[2]) == "-sha256")
-			test2(atoi(argv[3]), "picosha2");
-		else
-			test2(atoi(argv[2]), "tylek8137");
+		test2(atoi(argv[3]), std::string(argv[2]));
 	else if (std::string(argv[1]) == "-t3")
-		if (std::string(argv[2]) == "-sha256")
-			test3(atoi(argv[3]), "picosha2");
-		else
-			test3(atoi(argv[2]), "tylek8137");
+		test3(atoi(argv[3]), std::string(argv[2]));
+	else if (std::string(argv[1]) == "-cmp")
+		std::cout << compareHashes(std::string(argv[2]), std::string(argv[3])) << std::endl;
 	else 
 		std::cout << getHash(std::string(argv[1]), "tylek8137") << std::endl;
 }

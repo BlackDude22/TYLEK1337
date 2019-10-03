@@ -14,91 +14,77 @@ class TYLEK8137{
 		}
 
 		std::string getHash(std::string input){
-			unsigned long long int* hashArray = stringToHash(std::to_string(input.length()));
-			generateHash(hashArray, 2);
+			unsigned long int* hashArray = new unsigned long int[blockCount] ();
 			for (int i = 0; i < input.length(); i += blockCount){
 				std::string substring = input.substr(i, blockCount);
-				unsigned long long int* tempArray = stringToHash(substring);
+				unsigned long int* tempArray = stringToHash(substring);
 				generateHash(tempArray, 2);
 				addHash(hashArray, tempArray);
 				generateHash(hashArray, 1);
 				free(tempArray);
 			}
-			generateHash(hashArray, 1);
+			generateHash(hashArray, 2);
 			std::string result = hexify(hashArray);
 			free(hashArray);
 			return result;
 		}
 		
 	private:
-
-		unsigned long long int* stringToHash(std::string input){
-			unsigned long long int* hashArray = new unsigned long long int[blockCount] ();
+		unsigned long int* stringToHash(std::string input){
+			unsigned long int* hashArray = new unsigned long int[blockCount] ();
 			for (int i = 0; i < blockCount && i < input.length(); ++i)
-				hashArray[i] = (unsigned long long int)input.at(i);
+				hashArray[i] = (unsigned long int)input.at(i);
 			return hashArray;
 		}
 
-		void generateHash(unsigned long long int* hashArray, int iterations){
+		void generateHash(unsigned long int* hashArray, int iterations){
 			for (int i = 0; i < iterations; i++){
-				square(hashArray);
+				unsigned long int previousArraySquared[blockCount] = {};
+				for(int i = 0; i < blockCount; i++)
+					previousArraySquared[i] = getSquareRootNumbers(hashArray[i]);
 				mix(hashArray);
+				for(int i = 0; i < blockCount; i++)
+					hashArray[i] = hashArray[i]^previousArraySquared[i];
 			}
 		}
 
-		void square(unsigned long long int* hashArray){
-			for(int i = 0; i < blockCount; i++)
-				hashArray[i] = getSquareRootNumbers(hashArray[i]);
-		}
-
-		unsigned long long int getSquareRootNumbers(unsigned long long int input){
+		unsigned long int getSquareRootNumbers(unsigned long int input){
 			double root = sqrt(input);
 			double whole, frac;
 			frac = std::modf(root, &whole);
-			return (((int)whole)%100)*1e6 + (int)(frac*1e6);
+			return ((((unsigned long int)whole)%0x100)*0x1000000) + ((unsigned long int)(frac*0x1000000));
 		}
 
-		void mix(unsigned long long int* hashArray){
-			std::string currentStringArray[blockCount] {};
+		void mix(unsigned long int* hashArray){
+			unsigned long int previousArray[blockCount*3] = {};
 			for (int i = 0; i < blockCount; i++){
-				std::string temp = std::to_string(hashArray[i]);
-				temp.resize(blockLength, '0');
-				currentStringArray[i] = temp;
+				previousArray[i] = hashArray[i];
+				hashArray[i] = 0x0;
 			}
-			for (int i = 0; i < blockCount; i++){
-				std::string temp = "";
-				for (int j = 0; j < blockLength; j++){
-					temp += currentStringArray[j].at(i);
+
+			for (int i = 0; i < blockCount; i++)
+				for (int j = 0; j < blockCount; j++){
+					hashArray[i] *= 0x10;
+					hashArray[i] += previousArray[j]%0x10;
+					previousArray[j] /= 0x10;
 				}
-				hashArray[i] = std::stoi(temp);
-			}
 		}
 
-		std::string hexify(unsigned long long int* hashArray){
-			std::string result = "";
+		std::string hexify(unsigned long int* hashArray){
+			std::stringstream ss;
 			for(int i = 0; i < blockCount; i++){
-				std::string temp;
-				unsigned long long int tempint = hashArray[i]/1e8*0xffffffff;
-				std::stringstream ss;
+				unsigned long int tempint = hashArray[i];
 				ss << std::hex << tempint;
-				ss >> temp;
-				if (temp.length() != 8){
-					std::reverse(temp.begin(), temp.end());
-					temp.resize(8, '0');
-					std::reverse(temp.begin(), temp.end());
-				}
-				result += temp;
+				ss.seekp(0, std::ios::end);
+				for (int j = ss.tellp(); j < (i+1)*blockLength; j++)
+					ss << '0';
 			}
-			return result;
+			return ss.str();
 		}
 
-		void addHash(unsigned long long int* hash1, unsigned long long int* hash2){
-			for (int i = 0; i < blockCount; i++){
+		void addHash(unsigned long int* hash1, unsigned long int* hash2){
+			for (int i = 0; i < blockCount; i++)
 				hash1[i] = hash1[i]^hash2[i];
-				// if (hash1[i]%2 == 0)
-				// 	hash1[i] = hash1[i]&hash2[i];
-				// else hash1[i] = hash1[i]&hash2[i];
-			}
 		}
 };
 
