@@ -77,6 +77,44 @@ Pagal pasirinktą algoritmą nurodytą skaičių kartų generuojama pora unikali
 | failas1       | hash1 | 
 | failas2       | hash2 | 
 
+2. Failai su daug skirtingų simbolių
+
+| Įvestis | Hash |
+|---------|------|
+| failas1       | hash1 | 
+| failas2       | hash2 | 
+
+3. Failai su daug simbolių, skiriasi tik vienas
+
+| Įvestis | Hash |
+|---------|------|
+| failas1       | hash1 | 
+| failas2       | hash2 | 
+
+4. Tuščias failas
+
+| Įvestis | Hash |
+|---------|------|
+| failas1       | hash1 | 
+
+### Pirmas testas
+
+### Antras testas
+
+Testo rezultatai. Testas atliktas su 75 000 000 hash'ų.
+
+| Algoritmas | Pasikortoję hash | Visas hash'avimo laikas | Vidutinis hash'avimo greitis |
+| TYLEK8137 | 0 |  |  |
+| SHA256 | 0 |  |   | 
+
+### Trečias testas
+
+Testo rezultatai. Testas atliktas su 1 000 000 hash'ų.
+
+| Algoritmas | Minimali reikšmė | Maksimali reikšmė | Vidutinė reikšmė |
+| TYLEK8137 |   |   |   |
+| SHA256 |   |   |   |
+
 ## Algoritmas
 
 Algoritmo viduje duomenys saugomi 8 `unsigned long int` elementų masyve. Pradžioje sukuriamas masyvas, kurio kiekvieno elemento reikšmė lygi 0, tai bus masyvas saugantis galutinį rezultatą. Paskui vykdomas ciklas, kurio kievienos iteracijos metu apdorojami 8 įvesties `string`'o simboliai. Sukuriamas naujas masyvas, kurio reikšmės, tų simbolių ASCII reikšmės. Toliau vykdoma pati maišos funkcija 2 kartus. Iš kiekvienos reikšmės ištraukiama kvadratinė šaknis. Sudaroma reikšmė, kurios pirmi du simboliai yra šaknies sveikosios dalies du paskutiniai simboliai, sekantys šeši simboliai yra šaknies trupmeninės dalies pirmi šeši simboliai. Pavyzdžiui:
