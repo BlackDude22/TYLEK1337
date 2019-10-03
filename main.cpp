@@ -29,7 +29,7 @@ void hashFile(std::string fileName){
 	std::string line;
 	while(std::getline(ifs, line))
 		content += line;
-	std::cout << getHash(content, "tylek8137") << std::endl;
+	std::cout << getHash(content, "-tylek8137") << std::endl;
 }
 
 void test1(std::string fileName, std::string algorithm){
@@ -118,5 +118,5 @@ int main(int argc, char *argv[]){
 	else if (std::string(argv[1]) == "-cmp")
 		std::cout << compareHashes(std::string(argv[2]), std::string(argv[3])) << std::endl;
 	else 
-		std::cout << getHash(std::string(argv[1]), "tylek8137") << std::endl;
+		std::cout << getHash(std::string(argv[1]), "-tylek8137") << std::endl;
 }
