@@ -40,11 +40,21 @@ Vykdomas antras testas.
 
 Vykdomas trečias testas.
 
-## Pirmas testas
+### Pirmas testas
 
 Suhashuoja nurodyto failo turinį po vieną eilutę. Kiekvienas hash išvedamas į ekraną. Išvedamas realus hashavimo laikas.
 
-## Antras testas
+### Antras testas
+
+Pagal pasirinktą algoritmą nurodytą skaičių kartų sugeneruojamas unikalus įvesties `string` ir sugeneruojamas jo hash. Sugeneruotas hash palyginamas su visais anksčiau sugeneruotais hash. Kas 100 000 hash'ų į ekraną išvedama eilutė:
+
+`<hash'ų skaičius>, <pasikartojusių hash'ų skaičius>, <visas hash'avimo laikas>, <hash'avimo greitis>, <vidutinis hash'avimo greitis`
+
+Galimi algoritmai:
+
+`-tylek8137`
+`-sha256`
+`-rytisgit` (šis algoritmas patalpintas su @Rytisgit sutikimu)
 
 
 ## Algoritmas
