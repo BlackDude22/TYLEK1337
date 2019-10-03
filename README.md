@@ -40,6 +40,12 @@ Vykdomas antras testas.
 
 Vykdomas trečias testas.
 
+***
+
+`./hash -cmp <pirmas hash> <antras hash>`
+
+Palyginami hash'ai bitų lygmenyje. Panašumo koeficientas išvedamas į ekraną.
+
 ### Pirmas testas
 
 Suhashuoja nurodyto failo turinį po vieną eilutę. Kiekvienas hash išvedamas į ekraną. Išvedamas realus hashavimo laikas.
@@ -56,6 +62,20 @@ Galimi algoritmai:
 `-sha256`<br>
 `-rytisgit` (šis algoritmas patalpintas su @Rytisgit sutikimu)
 
+### Trečias testas
+
+Pagal pasirinktą algoritmą nurodytą skaičių kartų generuojama pora unikalių `string`'ų, kurie skiriasi per vieną simbolį, ir sugeneruojami jų hash. Abu hash'ai palyginami bitų lygmenyje ir gaunamas jų panašumo koeficientas. Iš visų koeficientų randama minimali, maksimali ir vidurkinė reikšmė. Šios reikšmės išvedamos į ekraną.
+
+## Užduočių rezultatai
+
+### Skaitymas iš failų
+
+1. Failai iš vieno simbolio
+
+| Įvestis | Hash |
+|---------|------|
+| failas1       | hash1 | 
+| failas2       | hash2 | 
 
 ## Algoritmas
 
