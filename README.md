@@ -104,6 +104,7 @@ Pagal pasirinktą algoritmą nurodytą skaičių kartų generuojama pora unikali
 Testo rezultatai. Testas atliktas su 75 000 000 hash'ų.
 
 | Algoritmas | Pasikortoję hash | Visas hash'avimo laikas | Vidutinis hash'avimo greitis |
+|------------|------------------|-------------------------|------------------------------|
 | TYLEK8137 | 0 |  |  |
 | SHA256 | 0 |  |   | 
 
@@ -112,6 +113,7 @@ Testo rezultatai. Testas atliktas su 75 000 000 hash'ų.
 Testo rezultatai. Testas atliktas su 1 000 000 hash'ų.
 
 | Algoritmas | Minimali reikšmė | Maksimali reikšmė | Vidutinė reikšmė |
+|------------|------------------|-------------------|------------------|
 | TYLEK8137 |   |   |   |
 | SHA256 |   |   |   |
 
