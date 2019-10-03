@@ -52,8 +52,8 @@ Pagal pasirinktą algoritmą nurodytą skaičių kartų sugeneruojamas unikalus 
 
 Galimi algoritmai:
 
-`-tylek8137`
-`-sha256`
+`-tylek8137`<br>
+`-sha256`<br>
 `-rytisgit` (šis algoritmas patalpintas su @Rytisgit sutikimu)
 
 
