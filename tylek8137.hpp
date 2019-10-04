@@ -4,6 +4,7 @@
 #include <sstream>
 #include <cmath>
 #include <algorithm>
+#include <iomanip>
 
 class TYLEK8137{
 	private:
@@ -72,13 +73,8 @@ class TYLEK8137{
 
 		std::string hexify(unsigned long int* hashArray){
 			std::stringstream ss;
-			for(int i = 0; i < blockCount; i++){
-				unsigned long int tempint = hashArray[i];
-				ss << std::hex << tempint;
-				ss.seekp(0, std::ios::end);
-				for (int j = ss.tellp(); j < (i+1)*blockLength; j++)
-					ss << '0';
-			}
+			for(int i = 0; i < blockCount; i++)
+				ss << std::setfill('0') << std::setw(8) << std::hex << hashArray[i];
 			return ss.str();
 		}
 
