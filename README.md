@@ -94,6 +94,8 @@ Pagal pasirinktą algoritmą nurodytą skaičių kartų generuojama pora unikali
 
 ## Užduočių rezultatai
 
+PASTABA. Testai atlikti su algoritmo versija v0.1.6, todėl dabartiniai rezultatai gali skirtis.
+
 ### Skaitymas iš failų
 
 1. Failai iš vieno simbolio
