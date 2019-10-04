@@ -53,7 +53,7 @@ class TYLEK8137{
 			double root = sqrt(input);
 			double whole, frac;
 			frac = std::modf(root, &whole);
-			return ((((unsigned long int)whole)%0x100)*0x1000000) + ((unsigned long int)(frac*0x1000000));
+			return ((unsigned long int)(frac*0x100000000));
 		}
 
 		void mix(unsigned long int* hashArray){
